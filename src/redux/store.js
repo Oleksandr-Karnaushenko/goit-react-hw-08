@@ -8,11 +8,13 @@ import {
   REGISTER,
 } from 'redux-persist';
 
-import contactReduser from './contactsSlice';
-import filterReduser from './filtersSlice';
+import authReduser from './auth/slice';
+import contactReduser from './contacts/slice';
+import filterReduser from './filters/slice';
 
 export const store = configureStore({
   reducer: {
+    auth: authReduser,
     contacts: contactReduser,
     filters: filterReduser,
   },

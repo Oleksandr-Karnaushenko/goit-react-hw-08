@@ -1,30 +1,60 @@
-import ContactForm from '../ContactForm/ContactForm';
-import SearchBox from '../SearchBox/SearchBox';
-import ContactList from '../ContactList/ContactList';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { fetchContacts } from '../../redux/contactsOps';
-import Loader from '../Loader/Loader';
-import { selectError, selectLoading } from '../../redux/contactsSlice';
-import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import { useDispatch } from 'react-redux';
+import { lazy, useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
+
+import Layout from '../Layout/Layout';
+import { PrivateRoute } from '../../utility/PrivateRoute';
+import { RestrictedRoute } from '../../utility/RestrictedRoute';
+
+const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
+const RegisterPage = lazy(() =>
+  import('../../pages/RegisterPage/RegisterPage')
+);
+const LoginPage = lazy(() => import('../../pages/LoginPage/LoginPage'));
+const ContactsPage = lazy(() =>
+  import('../../pages/ContactsPage/ContactsPage')
+);
 
 export default function App() {
   const dispatch = useDispatch();
-  const loader = useSelector(selectLoading);
-  const error = useSelector(selectError);
 
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchContacts());
+  // }, [dispatch]);
 
   return (
     <div style={{ margin: ' 10px' }}>
-      <h1>Phonebook</h1>
-      <ContactForm />
-      <SearchBox />
-      {loader && <Loader />}
-      {error && <ErrorMessage />}
-      <ContactList />
+      <Layout>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute
+                redirectTo="/contacts"
+                component={<RegisterPage />}
+              />
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <RestrictedRoute
+                redirectTo="/contacts"
+                component={<LoginPage />}
+              />
+            }
+          />
+          <Route
+            path="/contacts"
+            element={
+              <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+            }
+          />
+        </Routes>
+      </Layout>
     </div>
   );
 }
+
+//test@123.gmail.com

@@ -1,0 +1,12 @@
+.nav {
+  padding-left: 15px;
+  display: flex;
+  gap: 5px;
+}
+.link {
+  color: black;
+  font-weight: bold;
+}
+.active {
+  color: orangered;
+}

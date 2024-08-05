@@ -8,11 +8,33 @@
   border: 1px solid black;
   border-radius: 5px;
 }
-.button {
-  padding: 2px;
-  cursor: pointer;
-  height: min-content;
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 5px;
 }
 .icon {
   margin-right: 5px;
+}
+.form label {
+  display: flex;
+  align-items: center;
+}
+.form input {
+  width: 100%;
+  line-height: 20px;
+  padding: 2px;
+  border: 1px solid black;
+  border-radius: 2px;
+}
+.form input:disabled {
+  border-color: transparent;
+}
+.control {
+  display: flex;
+  justify-content: space-evenly;
+}
+.btn {
+  min-width: 70px;
 }

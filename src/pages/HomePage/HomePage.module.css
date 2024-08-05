@@ -1,0 +1,35 @@
+.list {
+  margin: 20px 0;
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.list li {
+  display: flex;
+  gap: 5px;
+  font-size: 1.2em;
+  font-weight: 700;
+}
+.list li svg,
+.infoList li svg {
+  width: 20px;
+  height: 20px;
+}
+.info {
+  margin-top: 10px;
+}
+.infoList {
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.infoList li {
+  width: fit-content;
+}
+.infoList li a {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}

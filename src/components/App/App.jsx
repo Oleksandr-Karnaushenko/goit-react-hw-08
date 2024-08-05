@@ -7,6 +7,7 @@ import { PrivateRoute } from '../../utility/PrivateRoute';
 import { RestrictedRoute } from '../../utility/RestrictedRoute';
 import { refreshUser } from '../../redux/auth/operations';
 import { selectIsRefreshing } from '../../redux/auth/selectors';
+import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage';
 
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
 const RegisterPage = lazy(() =>
@@ -26,7 +27,7 @@ export default function App() {
   }, [dispatch]);
 
   return (
-    <div style={{ margin: ' 10px' }}>
+    <div>
       {!isRefreshing && (
         <Layout>
           <Suspense fallback={null}>
@@ -59,6 +60,7 @@ export default function App() {
                   />
                 }
               />
+              <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </Suspense>
         </Layout>

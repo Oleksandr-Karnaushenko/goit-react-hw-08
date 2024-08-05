@@ -1,8 +1,22 @@
 .search {
+  width: 300px;
+  border-radius: 5px;
   margin-top: 10px;
+  padding: 10px;
+  border: 1px solid black;
 }
 .search input {
   padding: 3px;
-  width: 300px;
+  width: 100%;
   margin-top: 5px;
+}
+.radio {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-evenly;
+}
+.radio label {
+  cursor: pointer;
+  display: flex;
+  gap: 3px;
 }
